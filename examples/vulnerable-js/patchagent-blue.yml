@@ -1,0 +1,29 @@
+version: 1
+sast:
+  engine: semgrep
+  config: rules/eval.yml
+  metrics: off
+  timeout_sec: 60
+agent:
+  default: mock
+tests:
+  unit:
+    commands:
+      - name: node-unit
+        cmd: ["node", "test.js"]
+        timeout_sec: 120
+  services: []
+  attack:
+    replays:
+      - tests/attack/eval_payload.json
+limits:
+  max_attempts: 2
+  max_changed_files: 8
+  max_changed_lines: 500
+  command_timeout_sec: 1800
+safety:
+  require_git: true
+  require_clean_tree: true
+  direct_modify: false
+  use_worktree: true
+  allow_unsafe_no_git: false

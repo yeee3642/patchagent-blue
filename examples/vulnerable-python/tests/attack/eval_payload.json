@@ -1,0 +1,15 @@
+{
+  "id": "eval-payload-before-after",
+  "type": "command",
+  "cmd": "python -c \"from app import parse_expr; payload=\\\"__import__('os').system('echo PWNED')\\\";\\ntry:\\n    parse_expr(payload); print('VULNERABLE')\\nexcept Exception:\\n    print('BLOCKED')\"",
+  "timeout_sec": 30,
+  "before_patch": {
+    "expect_exit_code": 0,
+    "expect_stdout_regex": "PWNED[\\s\\S]*VULNERABLE"
+  },
+  "after_patch": {
+    "expect_exit_code": 0,
+    "expect_stdout_regex": "BLOCKED",
+    "expect_stdout_not_contains": "PWNED"
+  }
+}

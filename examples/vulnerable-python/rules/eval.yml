@@ -1,0 +1,11 @@
+rules:
+  - id: patchagent-blue.python.eval
+    languages:
+      - python
+    severity: ERROR
+    message: eval detected
+    pattern: eval($EXPR)
+    metadata:
+      category: code-injection
+      cwe:
+        - CWE-95

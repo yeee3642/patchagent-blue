@@ -1,0 +1,12 @@
+rules:
+  - id: patchagent-blue.javascript.eval
+    languages:
+      - javascript
+      - typescript
+    severity: ERROR
+    message: eval detected
+    pattern: eval($EXPR)
+    metadata:
+      category: code-injection
+      cwe:
+        - CWE-95

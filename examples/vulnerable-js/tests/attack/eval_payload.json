@@ -1,0 +1,14 @@
+{
+  "id": "eval-payload-before-after",
+  "type": "command",
+  "cmd": ["node", "-e", "const { parseExpr } = require('./app'); try { parseExpr('global.pwned=true'); console.log(global.pwned ? 'VULNERABLE' : 'UNKNOWN'); } catch (err) { console.log('BLOCKED'); }"],
+  "timeout_sec": 30,
+  "before_patch": {
+    "expect_exit_code": 0,
+    "expect_stdout_regex": "VULNERABLE"
+  },
+  "after_patch": {
+    "expect_exit_code": 0,
+    "expect_stdout_regex": "BLOCKED"
+  }
+}
