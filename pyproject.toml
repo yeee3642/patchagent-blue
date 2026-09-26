@@ -7,7 +7,15 @@ name = "patchagent-blue"
 version = "0.1.0"
 description = "Agentic vulnerability patching prototype using SAST, unit tests, and attack regression tests."
 requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+  { name = "Chen Po-Cheng" }
+]
 dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/yeee3642/patchagent-blue"
+Issues = "https://github.com/yeee3642/patchagent-blue/issues"
 
 [project.scripts]
 patchagent-blue = "patchagent_blue.cli:main"
